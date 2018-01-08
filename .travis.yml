@@ -1,7 +1,7 @@
 language: node_js
 node_js:
   - 'stable'
-  - '7'
+  - '9'
 before_install:
   - currentfolder=${PWD##*/}
   - if [ "$currentfolder" != 'generator-web-extension' ]; then cd .. && eval "mv $currentfolder generator-web-extension" && cd generator-web-extension; fi
