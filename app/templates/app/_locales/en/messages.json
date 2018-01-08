@@ -1,0 +1,18 @@
+{
+  "appName": {
+    "message": "<%= name %>",
+    "description": "The name of the application"
+  },
+  "appShortName": {
+    "message": "<%= shortName %>",
+    "description": "The short_name (maximum of 12 characters recommended) is a short version of the app's name."
+  },
+  "appDescription": {
+    "message": "<%= description %>",
+    "description": "The description of the application"
+  }<% if (action) { %>,
+  "browserActionTitle": {
+    "message": "<%= name %>",
+    "description": "The title of the browser action button"
+  }<% } %>
+}
