@@ -4,6 +4,8 @@ const { join } = require('path')
 const slugify = require('slugify')
 const yosay = require('yosay')
 const pkj = require('../package.json')
+const permissions = require('./permissions.json')
+const { capitalize, buildJSONPart, isChecked } = require('./utils')
 
 module.exports = class extends Generator {
   constructor (...args) {
@@ -80,103 +82,17 @@ module.exports = class extends Generator {
       type: 'checkbox',
       name: 'permissions',
       message: 'Would you like to use permissions?',
-      choices: [{
-        value: 'bookmarks',
-        name: 'Bookmarks',
+      choices: permissions.map((permission) => ({
+        value: permission,
+        name: capitalize(permission),
         checked: false
-      }, {
-        value: 'browsingData ',
-        name: 'BrowsingData ',
-        checked: false
-      }, {
-        value: 'clipboardRead',
-        name: 'ClipboardRead',
-        checked: false
-      }, {
-        value: 'clipboardWrite',
-        name: 'ClipboardWrite',
-        checked: false
-      }, {
-        value: 'contentSettings',
-        name: 'ContentSettings',
-        checked: false
-      }, {
-        value: 'contextMenus',
-        name: 'ContextMenus',
-        checked: false
-      }, {
-        value: 'cookies',
-        name: 'Cookies',
-        checked: false
-      }, {
-        value: 'commands',
-        name: 'Commands',
-        checked: false
-      }, {
-        value: 'debugger',
-        name: 'Debugger',
-        checked: false
-      }, {
-        value: 'declarativeContent',
-        name: 'DeclarativeContent',
-        checked: false
-      }, {
-        value: 'history',
-        name: 'History',
-        checked: false
-      }, {
-        value: 'input',
-        name: 'Input',
-        checked: false
-      }, {
-        value: 'management',
-        name: 'Management',
-        checked: false
-      }, {
-        value: 'notifications',
-        name: 'Notifications',
-        checked: false
-      }, {
-        value: 'pageCapture',
-        name: 'PageCapture',
-        checked: false
-      }, {
-        value: 'proxy',
-        name: 'Proxy',
-        checked: false
-      }, {
-        value: 'tabs',
-        name: 'Tabs',
-        checked: false
-      }, {
-        value: 'tabCapture',
-        name: 'TabCapture',
-        checked: false
-      }, {
-        value: 'topSites',
-        name: 'TopSites',
-        checked: false
-      }, {
-        value: 'webNavigation',
-        name: 'WebNavigation',
-        checked: false
-      }, {
-        value: 'webRequest',
-        name: 'WebRequest',
-        checked: false
-      }, {
-        value: 'webRequestBlocking',
-        name: 'WebRequestBlocking',
-        checked: false
-      }]
+      }))
     }, {
       type: 'confirm',
       name: 'promo',
       default: false,
       message: 'Would you like to install promo images for the Chrome Web Store?'
     }])
-
-    const isChecked = (choices, value) => choices.includes(value)
 
     // Meta
     this.appname = this.manifest.name = answers.name.replace(/"/g, '\\"')
@@ -194,28 +110,9 @@ module.exports = class extends Generator {
     this.manifest.contentscript = isChecked(answers.uifeatures, 'contentscript')
 
     // Permissions
-    this.manifest.permissions.bookmarks = isChecked(answers.permissions, 'bookmarks')
-    this.manifest.permissions.browsingData = isChecked(answers.permissions, 'browsingData')
-    this.manifest.permissions.clipboardRead = isChecked(answers.permissions, 'clipboardRead')
-    this.manifest.permissions.clipboardWrite = isChecked(answers.permissions, 'clipboardWrite')
-    this.manifest.permissions.commands = isChecked(answers.permissions, 'commands')
-    this.manifest.permissions.contentSettings = isChecked(answers.permissions, 'contentSettings')
-    this.manifest.permissions.contextMenus = isChecked(answers.permissions, 'contextMenus')
-    this.manifest.permissions.cookies = isChecked(answers.permissions, 'cookies')
-    this.manifest.permissions.debugger = isChecked(answers.permissions, 'debugger')
-    this.manifest.permissions.declarativeContent = isChecked(answers.permissions, 'declarativeContent')
-    this.manifest.permissions.history = isChecked(answers.permissions, 'history')
-    this.manifest.permissions.input = isChecked(answers.permissions, 'input')
-    this.manifest.permissions.management = isChecked(answers.permissions, 'management')
-    this.manifest.permissions.notifications = isChecked(answers.permissions, 'notifications')
-    this.manifest.permissions.pageCapture = isChecked(answers.permissions, 'pageCapture')
-    this.manifest.permissions.proxy = isChecked(answers.permissions, 'proxy')
-    this.manifest.permissions.tabCapture = isChecked(answers.permissions, 'tabCapture')
-    this.manifest.permissions.tabs = isChecked(answers.permissions, 'tabs')
-    this.manifest.permissions.topSites = isChecked(answers.permissions, 'topSites')
-    this.manifest.permissions.webNavigation = isChecked(answers.permissions, 'webNavigation')
-    this.manifest.permissions.webRequest = isChecked(answers.permissions, 'webRequest')
-    this.manifest.permissions.webRequestBlocking = isChecked(answers.permissions, 'webRequestBlocking')
+    permissions.forEach((permission) => {
+      this.manifest.permissions[permission] = isChecked(answers.permissions, permission)
+    })
 
     // Override a chrome page
     switch (answers.overridePage) {
@@ -303,11 +200,7 @@ module.exports = class extends Generator {
     var permissions = []
     var items = []
 
-    function buildJSONPart (part) {
-      return JSON.stringify(part, null, 2).replace(/\n/g, '\n  ')
-    }
-
-      // add browser / page action field
+    // add browser / page action field
     if (this.manifest.action > 0) {
       var action = {
         default_icon: {
@@ -321,7 +214,7 @@ module.exports = class extends Generator {
       manifest[title] = buildJSONPart(action)
     }
 
-      // add options page field.
+    // add options page field.
     if (this.manifest.options) {
       manifest.options_page = '"pages/options.html"'
       manifest.options_ui = buildJSONPart({
@@ -330,29 +223,29 @@ module.exports = class extends Generator {
       })
     }
 
-      // add devtool page field.
+    // add devtool page field.
     if (this.manifest.devtoolsPage) {
       manifest.minimum_chrome_version = '"10.0"'
       manifest.devtools_page = '"pages/devtools.html"'
     }
 
-      // Override Pages
+    // Override Pages
     if (this.manifest.overridePage) {
-        // add history page field.
+      // add history page field.
       if (this.manifest.historyPage) {
         manifest.chrome_url_overrides = buildJSONPart({
           history: 'pages/history.html'
         })
       }
 
-        // add bookmarks page field.
+      // add bookmarks page field.
       if (this.manifest.bookmarksPage) {
         manifest.chrome_url_overrides = buildJSONPart({
           bookmarks: 'pages/bookmarks.html'
         })
       }
 
-        // add newtab page field.
+      // add newtab page field.
       if (this.manifest.newtabPage) {
         manifest.chrome_url_overrides = buildJSONPart({
           newtab: 'pages/newtab.html'
@@ -360,14 +253,14 @@ module.exports = class extends Generator {
       }
     }
 
-      // add omnibox keyword field.
+    // add omnibox keyword field.
     if (this.manifest.omnibox) {
       manifest.omnibox = buildJSONPart({
         keyword: this.manifest.shortName
       })
     }
 
-      // add contentscript field.
+    // add contentscript field.
     if (this.manifest.contentscript) {
       const contentscript = [{
         matches: ['http://*/*', 'https://*/*'],
@@ -380,19 +273,19 @@ module.exports = class extends Generator {
       manifest.content_scripts = buildJSONPart(contentscript)
     }
 
-      // add generate permission field.
+    // add generate permission field.
     for (let p in this.manifest.permissions) {
       if (this.manifest.permissions[p]) {
         permissions.push(p)
       }
     }
 
-      // add generic match pattern field.
+    // add generic match pattern field.
     if (this.manifest.permissions.tabs) {
       permissions.push('<all_urls>')
     }
 
-      // add permissions
+    // add permissions
     if (permissions.length > 0) {
       manifest.permissions = buildJSONPart(permissions)
     }

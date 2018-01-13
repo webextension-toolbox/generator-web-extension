@@ -3,6 +3,7 @@
 const path = require('path')
 const assert = require('yeoman-assert')
 const helpers = require('yeoman-test')
+const permissions = require('../app/permissions.json')
 
 describe('generator-web-extension:app', () => {
   before(() => {
@@ -22,30 +23,7 @@ describe('generator-web-extension:app', () => {
           'contentscript',
           'omnibox'
         ],
-        permissions: [
-          'bookmarks',
-          'browsingData',
-          'clipboardRead',
-          'clipboardWrite',
-          'contentSettings',
-          'contextMenus',
-          'cookies',
-          'commands',
-          'debugger',
-          'declarativeContent',
-          'history',
-          'input',
-          'management',
-          'notifications',
-          'pageCapture',
-          'proxy',
-          'tabs',
-          'tabCapture',
-          'topSites',
-          'webNavigation',
-          'webRequest',
-          'webRequestBlocking'
-        ],
+        permissions,
         promo: true
       })
       .toPromise()
@@ -146,30 +124,12 @@ describe('generator-web-extension:app', () => {
   })
 
   it('sets permissions to manifest', () => {
+    const filePath = 'app/manifest.json'
     assert.fileContent([
-      ['app/manifest.json', /"bookmarks"/],
-      ['app/manifest.json', /"browsingData"/],
-      ['app/manifest.json', /"clipboardRead"/],
-      ['app/manifest.json', /"clipboardWrite"/],
-      ['app/manifest.json', /"contentSettings"/],
-      ['app/manifest.json', /"contextMenus"/],
-      ['app/manifest.json', /"cookies"/],
-      ['app/manifest.json', /"commands"/],
-      ['app/manifest.json', /"debugger"/],
-      ['app/manifest.json', /"declarativeContent"/],
-      ['app/manifest.json', /"history"/],
-      ['app/manifest.json', /"input"/],
-      ['app/manifest.json', /"management"/],
-      ['app/manifest.json', /"notifications"/],
-      ['app/manifest.json', /"pageCapture"/],
-      ['app/manifest.json', /"proxy"/],
-      ['app/manifest.json', /"tabs"/],
-      ['app/manifest.json', /"tabCapture"/],
-      ['app/manifest.json', /"topSites"/],
-      ['app/manifest.json', /"webNavigation"/],
-      ['app/manifest.json', /"webRequest"/],
-      ['app/manifest.json', /"webRequestBlocking"/],
-      ['app/manifest.json', /\s+"http:\/\/\*\/\*",\s+"https:\/\/\*\/\*"/]
+      ...permissions.map(permission => ([
+        filePath, new RegExp(`"${permission}"`)
+      ])),
+      [filePath, /\s+"http:\/\/\*\/\*",\s+"https:\/\/\*\/\*"/]
     ])
   })
 })
