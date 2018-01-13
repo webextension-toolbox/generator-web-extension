@@ -11,7 +11,9 @@ Under the hood it uses [webextension-toolbox](https://github.com/HaNdTriX/webext
 
 ## Install
 
-  $ npm install -g yo generator-web-extension
+```shell
+$ npm install -g yo generator-web-extension
+```
 
 ## Getting Started
 
