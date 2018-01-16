@@ -11,7 +11,8 @@
   },
   "scripts": {
     "test": "npm run lint && mocha",
-    "lint": "standard"
+    "lint": "standard",
+    "release": "np"
   },
   "files": [
     "app"
@@ -42,6 +43,7 @@
   },
   "devDependencies": {
     "mocha": "latest",
+    "np": "latest",
     "standard": "latest"
   },
   "peerDependencies": {
