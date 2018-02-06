@@ -13,7 +13,7 @@ describe('generator-web-extension:app', () => {
       })
       .withPrompts({
         name: 'test-extension',
-        shortName: 'test-ext',
+        shortName: 'test ext',
         description: 'Lorem Ipsum',
         action: 'Browser',
         overridePage: 'Newtab Page',
@@ -130,6 +130,13 @@ describe('generator-web-extension:app', () => {
         filePath, new RegExp(`"${permission}"`)
       ])),
       [filePath, /\s+"http:\/\/\*\/\*",\s+"https:\/\/\*\/\*"/]
+    ])
+  })
+
+  it('correctly omnibox sluggifies the omnibox keyword', () => {
+    const filePath = 'app/manifest.json'
+    assert.fileContent([
+      [filePath, /"keyword": "test-ext"/]
     ])
   })
 })

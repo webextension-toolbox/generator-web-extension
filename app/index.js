@@ -256,7 +256,7 @@ module.exports = class extends Generator {
     // add omnibox keyword field.
     if (this.manifest.omnibox) {
       manifest.omnibox = buildJSONPart({
-        keyword: this.manifest.shortName
+        keyword: slugify(this.manifest.shortName)
       })
     }
 
