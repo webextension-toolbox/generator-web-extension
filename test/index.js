@@ -133,7 +133,7 @@ describe('generator-web-extension:app', () => {
     ])
   })
 
-  it('correctly omnibox sluggifies the omnibox keyword', () => {
+  it('correctly sluggifies the omnibox keyword', () => {
     const filePath = 'app/manifest.json'
     assert.fileContent([
       [filePath, /"keyword": "test-ext"/]
