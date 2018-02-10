@@ -472,7 +472,7 @@ module.exports = class extends Generator {
 
   end () {
     this.log(
-      yosay('Please run ' + chalk.red('npm run build -- chrome') + ' or  ' + chalk.yellow('npm run dev -- chrome') + ' and load the generated dist into chrome.')
+      yosay(`Please run ${chalk.red('npm run build chrome')} or  ${chalk.yellow('npm run dev chrome')} and load the generated dist into chrome.`)
     )
   }
 }
