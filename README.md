@@ -1,6 +1,7 @@
 ![generator-web-extension](assets/logo-repo.png)
 
 [![build status](https://secure.travis-ci.org/webextension-tools/generator-web-extension.png?branch=master)](https://travis-ci.org/webextension-tools/generator-web-extension) 
+[![dependencies](https://david-dm.org/webextension-tools/generator-web-extension/status.svg)](https://david-dm.org/webextension-tools/generator-web-extension) 
 [![npm package](https://badge.fury.io/js/generator-web-extension.svg)](https://www.npmjs.com/package/generator-web-extension)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-green.svg?style=flat-square)](https://github.com/feross/standard)
 [![license](https://img.shields.io/npm/l/generator-web-extension.svg)](https://github.com/webextension-tools/generator-web-extension/blob/master/LICENSE)
