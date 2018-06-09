@@ -6,7 +6,7 @@
 [![devDependencies](https://david-dm.org/webextension-tools/generator-web-extension/dev-status.svg)](https://david-dm.org/webextension-tools/generator-web-extension?type=dev) 
 [![devDependencies](https://david-dm.org/webextension-tools/generator-web-extension/peer-status.svg)](https://david-dm.org/webextension-tools/generator-web-extension?type=peer) 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-green.svg?style=flat-square)](https://github.com/feross/standard)
-[![license](https://img.shields.io/npm/l/generator-web-extension.svg)](https://github.com/webextension-tools/generator-web-extension/blob/master/LICENSE)
+[![license](https://img.shields.io/npm/l/generator-web-extension.svg)](https://github.com/webextension-tools/generator-web-extension/blob/master/LICENSE) [![Greenkeeper badge](https://badges.greenkeeper.io/webextension-tools/generator-web-extension.svg)](https://greenkeeper.io/)
 
 Advanced WebExtension generator that creates everything you need to get started with cross-browser extension/addon development. 
 
