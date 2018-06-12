@@ -24,7 +24,8 @@ describe('generator-web-extension:app', () => {
           'omnibox'
         ],
         permissions,
-        promo: true
+        promo: true,
+        usesYarn: false
       })
       .toPromise()
   })
