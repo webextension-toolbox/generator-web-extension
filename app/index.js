@@ -6,6 +6,7 @@ const yosay = require('yosay')
 const pkj = require('../package.json')
 const permissions = require('./permissions.json')
 const { capitalize, buildJSONPart, isChecked } = require('./utils')
+const commandExists = require('command-exists')
 
 module.exports = class extends Generator {
   constructor (...args) {
@@ -24,7 +25,7 @@ module.exports = class extends Generator {
   }
 
   async prompting () {
-    const answers = await this.prompt([{
+    const prompts = [{
       type: 'input',
       name: 'name',
       message: 'What would you like to call this extension?',
@@ -92,7 +93,19 @@ module.exports = class extends Generator {
       name: 'promo',
       default: false,
       message: 'Would you like to install promo images for the Chrome Web Store?'
-    }])
+    }]
+
+    const hasYarnInstalled = await commandExists('yarn')
+    if (hasYarnInstalled) {
+      prompts.push({
+        type: 'confirm',
+        name: 'usesYarn',
+        default: true,
+        message: 'Would you like to use yarn instead of npm?'
+      })
+    }
+
+    const answers = await this.prompt(prompts)
 
     // Meta
     this.appname = this.manifest.name = answers.name.replace(/"/g, '\\"')
@@ -135,6 +148,7 @@ module.exports = class extends Generator {
 
     // Promo images
     this.promo = answers.promo
+    this.usesYarn = Boolean(answers.usesYarn)
   }
 
   packageJSON () {
@@ -466,13 +480,30 @@ module.exports = class extends Generator {
   }
 
   installing () {
-    this.log('I\'m all done. Running ' + chalk.yellow('npm install') + ' for you to install the required dependencies. If this fails, try running the command yourself.')
-    this.npmInstall()
+    const installCommand = this.usesYarn
+      ? 'yarn install'
+      : 'npm install'
+
+    this.log(`I'm all done. Running ${chalk.yellow(installCommand)} for you to install the required dependencies. If this fails, try running the command yourself.`)
+
+    if (this.usesYarn) {
+      this.yarnInstall()
+    } else {
+      this.npmInstall()
+    }
   }
 
   end () {
+    const buildCommand = this.usesYarn
+      ? 'yarn build chrome'
+      : 'npm run build chrome'
+
+    const devCommand = this.usesYarn
+      ? 'yarn dev chrome'
+      : 'npm run dev chrome'
+
     this.log(
-      yosay(`Please run ${chalk.red('npm run build chrome')} or  ${chalk.yellow('npm run dev chrome')} and load the generated dist into chrome.`)
+      yosay(`Please run ${chalk.red(buildCommand)} or  ${chalk.yellow(devCommand)} and load the generated dist into chrome.`)
     )
   }
 }
