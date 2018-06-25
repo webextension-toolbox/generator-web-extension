@@ -1,4 +1,4 @@
-![generator-web-extension](assets/logo-repo.png)
+[![generator-web-extension](./assets/icon.svg)](https://www.npmjs.com/package/generator-web-extension)
 
 [![build status](https://secure.travis-ci.org/HaNdTriX/generator-web-extension.png?branch=master)](https://travis-ci.org/HaNdTriX/generator-web-extension) 
 [![npm package](https://badge.fury.io/js/generator-web-extension.svg)](https://www.npmjs.com/package/generator-web-extension)
