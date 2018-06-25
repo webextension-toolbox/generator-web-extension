@@ -1,13 +1,13 @@
 [![generator-web-extension](./assets/icon.svg)](https://www.npmjs.com/package/generator-web-extension)
 
-[![build status](https://secure.travis-ci.org/HaNdTriX/generator-web-extension.png?branch=master)](https://travis-ci.org/HaNdTriX/generator-web-extension) 
+[![build status](https://secure.travis-ci.org/webextension-toolbox/generator-web-extension.png?branch=master)](https://travis-ci.org/webextension-toolbox/generator-web-extension) 
 [![npm package](https://badge.fury.io/js/generator-web-extension.svg)](https://www.npmjs.com/package/generator-web-extension)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-green.svg?style=flat-square)](https://github.com/feross/standard)
-[![license](https://img.shields.io/npm/l/generator-web-extension.svg)](https://github.com/HaNdTriX/generator-web-extension/blob/master/LICENSE)
+[![license](https://img.shields.io/npm/l/generator-web-extension.svg)](https://github.com/webextension-toolbox/generator-web-extension/blob/master/LICENSE)
 
 Advanced WebExtension generator that creates everything you need to get started with cross-browser extension/addon development. 
 
-Under the hood it uses [webextension-toolbox](https://github.com/HaNdTriX/webextension-toolbox) for compiling the extensions.
+Under the hood it uses [webextension-toolbox](https://github.com/webextension-toolbox/webextension-toolbox) for compiling the extensions.
 
 ## Install
 
