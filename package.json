@@ -4,7 +4,7 @@
   "description": "Yeoman generator for creating cross-browser WebExtensions",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "https://github.com/HaNdTriX/generator-web-extension",
+  "repository": "https://github.com/webextension-toolbox/generator-web-extension",
   "author": "Henrik Wenz <HaNdTriX@gmail.com> (https://github.com/HaNdTriX)",
   "engines": {
     "node": ">=8.1.4"
@@ -34,6 +34,7 @@
   ],
   "dependencies": {
     "chalk": "^2.3.0",
+    "command-exists": "^1.2.6",
     "slugify": "^1.2.1",
     "yeoman-assert": "^3.0.0",
     "yeoman-generator": "^2.0.2",
