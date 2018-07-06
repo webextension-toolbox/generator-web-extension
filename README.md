@@ -1,5 +1,6 @@
-![generator-web-extension](assets/logo-repo.png)
+[![generator-web-extension](./assets/icon.svg)](https://www.npmjs.com/package/generator-web-extension)
 
+[![build status](https://secure.travis-ci.org/webextension-toolbox/generator-web-extension.png?branch=master)](https://travis-ci.org/webextension-toolbox/generator-web-extension) 
 [![npm package](https://badge.fury.io/js/generator-web-extension.svg)](https://www.npmjs.com/package/generator-web-extension)
 [![build status](https://secure.travis-ci.org/webextension-toolbox/generator-web-extension.png?branch=master)](https://travis-ci.org/webextension-toolbox/generator-web-extension)
 [![Build status](https://ci.appveyor.com/api/projects/status/ajr5bdyo5j15e6mf?svg=true)](https://ci.appveyor.com/project/webextension-toolbox/generator-web-extension)
@@ -7,7 +8,7 @@
 [![devDependencies](https://david-dm.org/webextension-toolbox/generator-web-extension/dev-status.svg)](https://david-dm.org/webextension-toolbox/generator-web-extension?type=dev) 
 [![devDependencies](https://david-dm.org/webextension-toolbox/generator-web-extension/peer-status.svg)](https://david-dm.org/webextension-toolbox/generator-web-extension?type=peer) 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-green.svg?style=flat-square)](https://github.com/feross/standard)
-[![license](https://img.shields.io/npm/l/generator-web-extension.svg)](https://github.com/webextension-toolbox/generator-web-extension/blob/master/LICENSE) 
+[![license](https://img.shields.io/npm/l/generator-web-extension.svg)](https://github.com/webextension-toolbox/generator-web-extension/blob/master/LICENSE)
 
 Advanced WebExtension generator that creates everything you need to get started with cross-browser extension/addon development. 
 
