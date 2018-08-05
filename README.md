@@ -24,7 +24,7 @@ $ npm install -g yo generator-web-extension
 1. First make a new directory, and `cd` into it: `mkdir my-web-extension && cd $_`
 2. Run: `yo web-extension`.
 
-![GIF showing the demo](https://i.imgur.com/XLnxCr3.gif)
+![GIF showing the demo](https://i.imgur.com/lqTK588.gif)
 
 ## Options
 
