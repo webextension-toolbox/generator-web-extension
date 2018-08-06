@@ -40,6 +40,10 @@ module.exports = class extends Generator {
       message: 'How would you like to describe this extension?',
       default: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     }, {
+      name: 'author',
+      message: 'Who is the author of this extension? (author)',
+      default: this.user.git.name()
+    }, {
       type: 'list',
       name: 'action',
       message: 'Would you like to use UI Action?',
@@ -111,6 +115,7 @@ module.exports = class extends Generator {
     this.appname = this.manifest.name = answers.name.replace(/"/g, '\\"')
     this.appShortName = this.manifest.shortName = answers.shortName.replace(/"/g, '\\"')
     this.appDescription = answers.description
+    this.manifest.author = answers.author
     this.manifest.description = answers.description.replace(/"/g, '\\"')
 
     // UI Actions
@@ -213,6 +218,9 @@ module.exports = class extends Generator {
     var manifest = {}
     var permissions = []
     var items = []
+
+    // add author key
+    manifest.author = buildJSONPart(this.manifest.author)
 
     // add browser / page action field
     if (this.manifest.action > 0) {

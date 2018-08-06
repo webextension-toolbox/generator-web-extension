@@ -15,6 +15,7 @@ describe('generator-web-extension:app', () => {
         name: 'test-extension',
         shortName: 'test ext',
         description: 'Lorem Ipsum',
+        author: 'WebExtension Generator',
         action: 'Browser',
         overridePage: 'Newtab Page',
         uifeatures: [
