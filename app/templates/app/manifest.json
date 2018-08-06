@@ -12,6 +12,7 @@
   "background": {
     "scripts": [
       "scripts/background.js"
-    ]
+    ],
+    "__chrome|edge|opera__persistent": false
   }<%- items %>
 }
