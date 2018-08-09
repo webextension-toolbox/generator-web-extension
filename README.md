@@ -1,4 +1,5 @@
 ![generator-web-extension](assets/logo-repo.png)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fwebextension-toolbox%2Fgenerator-web-extension.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fwebextension-toolbox%2Fgenerator-web-extension?ref=badge_shield)
 
 [![npm package](https://badge.fury.io/js/generator-web-extension.svg)](https://www.npmjs.com/package/generator-web-extension)
 [![build status](https://secure.travis-ci.org/webextension-toolbox/generator-web-extension.png?branch=master)](https://travis-ci.org/webextension-toolbox/generator-web-extension)
@@ -38,3 +39,6 @@ $ npm install -g yo generator-web-extension
 Copyright 2018 Henrik Wenz
 
 This project is free software released under the MIT license.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fwebextension-toolbox%2Fgenerator-web-extension.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fwebextension-toolbox%2Fgenerator-web-extension?ref=badge_large)
