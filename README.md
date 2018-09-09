@@ -1,4 +1,5 @@
-![generator-web-extension](assets/logo-repo.png)
+[<img align="right" src="./assets/icon.svg?sanitize=true" alt="logo">](https://www.npmjs.com/package/generator-web-extension)
+# Generator: WebExtension
 
 [![npm package](https://badge.fury.io/js/generator-web-extension.svg)](https://www.npmjs.com/package/generator-web-extension)
 [![build status](https://secure.travis-ci.org/webextension-toolbox/generator-web-extension.png?branch=master)](https://travis-ci.org/webextension-toolbox/generator-web-extension)
