@@ -33,9 +33,9 @@ jobs:
       versionSpec: $(node_version)
     displayName: 'Install Node.js'
   - script: |
-      yarn install
-      yarn test
-    displayName: 'yarn install and test'
+      npm install
+      npm test
+    displayName: 'npm install and test'
 
 
 # Run a build on macOS at the same time
@@ -58,9 +58,9 @@ jobs:
       versionSpec: $(node_version)
     displayName: 'Install Node.js'
   - script: |
-      yarn install
-      yarn test
-    displayName: 'yarn install and test'
+      npm install
+      npm test
+    displayName: 'npm install and test'
 
 # Run a build on Windows at the same time
 - job: Windows
@@ -82,6 +82,6 @@ jobs:
       versionSpec: $(node_version)
     displayName: 'Install Node.js'
   - script: |
-      yarn install
-      yarn test
-    displayName: 'yarn install and test'
+      npm install
+      npm test
+    displayName: 'npm install and test'
