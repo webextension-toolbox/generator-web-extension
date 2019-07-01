@@ -46,6 +46,6 @@
     "standard": "latest"
   },
   "peerDependencies": {
-    "yo": "1 || 2"
+    "yo": "3"
   }
 }
