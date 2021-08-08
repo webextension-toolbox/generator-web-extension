@@ -1,0 +1,23 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  assignees:
+  - balcsida
+  ignore:
+  - dependency-name: yeoman-generator
+    versions:
+    - 5.0.0
+    - 5.0.1
+    - 5.1.0
+  - dependency-name: yeoman-test
+    versions:
+    - 4.0.0
+    - 4.0.1
+    - 5.0.1
+  - dependency-name: chalk
+    versions:
+    - 4.1.0
