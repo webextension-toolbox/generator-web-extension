@@ -33,7 +33,7 @@
     "edge-extension"
   ],
   "dependencies": {
-    "chalk": "^2.3.0",
+    "chalk": "^5.0.0",
     "command-exists": "^1.2.6",
     "slugify": "^1.2.1",
     "yeoman-assert": "^3.0.0",
