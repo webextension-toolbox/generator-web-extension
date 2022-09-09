@@ -7,6 +7,6 @@
     "build": "webextension-toolbox build"
   },
   "devDependencies": {
-    "webextension-toolbox": "latest"
+    "@webextension-toolbox/webextension-toolbox": "latest"
   }
 }
